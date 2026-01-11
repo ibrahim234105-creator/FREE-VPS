@@ -35,19 +35,17 @@ echo -e "${N}"
 
 clear
 print_jishnu_logo
-print_status "*" "IDX TOOL SETUP"
-print_divider
 echo
 
-echo -e "${R}+----------------------------------------------------------+${N}"
-echo -e "${R}|${W}              IDX TOOL SETUP (FeatherPlayz)            ${R}|${N}"
+print_jishnu_logo
+echo -e "${R}|${W}              IDX TOOL SETUP                          ${R}|${N}"
 echo -e "${R}+----------------------------------------------------------+${N}\n"
 
 echo -e "${Y}[*] Cleaning up old files...${N}"
 cd ~ || exit
 rm -rf myapp flutter
 
-cd vps123 || exit
+cd feather.sh || exit
 
 if [ ! -d ".idx" ]; then
     echo -e "${G}[+] Creating .idx directory...${N}"
