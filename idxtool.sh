@@ -40,7 +40,7 @@ print_divider
 echo
 
 echo -e "${R}+----------------------------------------------------------+${N}"
-echo -e "${R}|${W}              IDX DEVELOPMENT TOOL SETUP               ${R}|${N}"
+echo -e "${R}|${W}              IDX TOOL SETUP (FeatherPlayz)            ${R}|${N}"
 echo -e "${R}+----------------------------------------------------------+${N}\n"
 
 echo -e "${Y}[*] Cleaning up old files...${N}"
