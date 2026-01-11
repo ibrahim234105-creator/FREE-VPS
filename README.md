@@ -1,5 +1,4 @@
 # feather.sh
-THIS SCRIPT IS MADE BY HOPINGBOYZ, BUT PRODUCED BY FEATHERPLAYZ.
-
-ENJOY ♥️
-
+ENJOY
+ALL VMs are given by FusionNodes
+https://discord.gg/sPkhrrDaVF/
