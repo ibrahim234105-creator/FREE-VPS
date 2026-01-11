@@ -1,0 +1,282 @@
+#!/usr/bin/env bash
+# ===================================================
+# PTERODACTYL HOSTING MANAGER - NEXT GEN ULTRA EDITION
+# 2025 Edition
+# ===================================================
+# Original Creator: MahimOp
+# YouTube : https://www.youtube.com/@mahimxyz
+# Discord : https://discord.gg/zkDNdPpArS
+# ===================================================
+set -e
+# Next-Gen Neon Color Theme
+RESET="\e[0m"
+BOLD="\e[1m"
+DIM="\e[2m"
+UNDERLINE="\e[4m"
+CYAN="\e[96m"
+BLUE="\e[94m"
+PURPLE="\e[95m"
+GREEN="\e[92m"
+YELLOW="\e[93m"
+RED="\e[91m"
+WHITE="\e[97m"
+NEON_GREEN="\e[38;5;82m"
+NEON_PURPLE="\e[38;5;165m"
+DANGER="\e[38;5;75m"
+GLOW="\e[38;5;51m"
+DANGER="\e[38;5;196m"
+clear
+# Epic Welcome Animation Header
+welcome_banner() {
+    clear
+    echo -e "${DANGER}"
+    cat << "EOF"
+ ___      ___       __       __    __   __     ___      ___ 
+|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
+ \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
+ /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
+|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
+|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
+|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
+   
+EOF
+    echo -e "${NEON_PURPLE}${BOLD} NEXT GEN ULTRA EDITION - 2025${RESET}"
+    echo -e "${GLOW} Ultimate Pterodactyl Control Center${RESET}"
+    echo -e "${DIM} Original Creator: ${BOLD}MahimOp${RESET} ${DIM}| YouTube: @mahimxyz${RESET}"
+    echo -e "${DIM} Discord: https://discord.gg/zkDNdPpArS${RESET}"
+    echo -e "${DANGER}══════════════════════════════════════════════════════════${RESET}\n"
+    sleep 1.5
+}
+# Utility Functions
+progress() { echo -e "${NEON_GREEN}${BOLD}➤ $1${RESET}"; }
+success() { echo -e "${GREEN}${BOLD}✓ $1${RESET}"; }
+warning() { echo -e "${YELLOW}${BOLD}! $1${RESET}"; }
+error() { echo -e "${RED}${BOLD}✘ $1${RESET}"; }
+print_box_header() {
+    local text="$1"
+    local color="${2:-$NEON_PURPLE}"
+    echo -e "${color}${BOLD}╔══════════════════════════════════════════════════════════╗${RESET}"
+    echo -e "${color}${BOLD}║${RESET} ${WHITE}${BOLD}$text$(printf '%*s' $((58 - ${#text})) '') ${color}${BOLD}║${RESET}"
+    echo -e "${color}${BOLD}╚══════════════════════════════════════════════════════════╝${RESET}\n"
+}
+print_menu_option() {
+    local num="$1"
+    local text="$2"
+    echo -e "${DANGER} ┌──────────────────────────────────────────────────────┐${RESET}"
+    echo -e "${DANGER} │${RESET} ${WHITE}${BOLD}[${NEON_GREEN}${num}${WHITE}]${RESET} ${CYAN}${text}$(printf '%*s' $((48 - ${#text} - 3)) '') ${DANGER}│${RESET}"
+    echo -e "${DANGER} └──────────────────────────────────────────────────────┘${RESET}"
+}
+# Remote Script Runner
+run_remote_script() {
+    local url="$1"
+    local name="$2"
+    clear
+    echo -e "${NEON_PURPLE}"
+    cat << "EOF"
+ ___      ___       __       __    __   __     ___      ___ 
+|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
+ \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
+ /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
+|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
+|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
+|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
+                             
+EOF
+    print_box_header "$name" $NEON_PURPLE
+    progress "Downloading and executing remote script..."
+    local temp_script=$(mktemp)
+    if curl -fsSL "$url" -o "$temp_script"; then
+        chmod +x "$temp_script"
+        bash "$temp_script"
+        rm -f "$temp_script"
+        success "$name completed!"
+    else
+        error "Failed to download script from $url"
+    fi
+    echo -e "\n${DANGER}══════════════════════════════════════════════════════════${RESET}"
+    read -p $'\e[93mPress Enter to return to menu...\e[0m' -r
+}
+# Main Menu
+show_menu() {
+    clear
+    echo -e "${DANGER}"
+    cat << "EOF"
+ ___      ___       __       __    __   __     ___      ___ 
+|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
+ \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
+ /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
+|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
+|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
+|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
+                                                           
+                                              
+EOF
+    echo -e "${NEON_PURPLE}${BOLD} PTERODACTYL HOSTING MANAGER${RESET}\n"
+    print_box_header "CONTROL PANEL" $NEON_PURPLE
+    print_menu_option "1" "Panel Installation"
+    print_menu_option "2" "Wings Installation"
+    print_menu_option "3" "Panel Update"
+    print_menu_option "4" "Uninstall Tools"
+    print_menu_option "5" "Blueprint Setup"
+    print_menu_option "6" "Cloudflare Setup"
+    print_menu_option "7" "Change Theme"
+    print_menu_option "8" "Tailscale (Install + Up)"
+    print_menu_option "9" "Minecraft Player Manager"
+    print_menu_option "10" "Jexactyl Installation"
+    print_menu_option "0" "Exit Manager"
+    echo -e "\n${DANGER}══════════════════════════════════════════════════════════${RESET}"
+    read -p $'\e[93m\e[1m Select option [0-10]: \e[0m' choice
+    echo
+}
+# Welcome
+welcome_banner
+# Main Loop
+while true; do
+    show_menu
+    case $choice in
+        1) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/panel2.sh" "PANEL INSTALLATION" ;;
+        2) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/wing2.sh" "WINGS INSTALLATION" ;;
+        3) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/update2.sh" "PANEL UPDATE" ;;
+        4) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/uninstall2.sh" "UNINSTALL TOOLS" ;;
+        5) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/Blueprint2.sh" "BLUEPRINT SETUP" ;;
+        6) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/cloudflare.sh" "CLOUDFLARE SETUP" ;;
+        7) run_remote_script "https://raw.githubusercontent.com/mahimxyzz/Vps/refs/heads/main/cd/th2.sh" "THEME CHANGER" ;;
+        8)
+            clear
+            print_box_header "TAILSCALE INSTALLATION" $NEON_PURPLE
+            progress "Installing Tailscale..."
+            curl -fsSL https://tailscale.com/install.sh | sh
+            success "Tailscale installed!"
+            systemctl enable --now tailscaled 2>/dev/null || true
+            progress "Bringing Tailscale online..."
+            if [ -n "$TS_AUTH_KEY" ]; then
+                sudo tailscale up -ssh --auth-key="$TS_AUTH_KEY" && success "Authenticated via key"
+            else
+                sudo tailscale up -ssh && success "Connected! Approve in admin console"
+            fi
+            read -p $'\e[93mPress Enter to continue...\e[0m' -r
+            ;;
+9)
+    clear
+    print_box_header "MINECRAFT PLAYER MANAGER" $NEON_PURPLE
+    progress "Installing Minecraft extensions..."
+    cd /var/www/pterodactyl || { error "Panel directory not found!"; read -p "Press Enter..."; continue; }
+    
+    wget -q https://github.com/mahimxyzz/Vps/raw/main/minecraftplayermanager.blueprint
+    wget -q https://github.com/mahimxyzz/Vps/raw/main/mcplugins.blueprint
+    wget -q https://github.com/mahimxyzz/Vps/raw/main/huxregister.blueprint
+    
+    blueprint -i mcplugins.blueprint && success "MC Plugins installed"
+    blueprint -i minecraftplayermanager.blueprint && success "Player Manager installed"
+    blueprint -i huxregister.blueprint && success "huxregister installed"
+    
+    read -p $'\e[93mPress Enter to continue...\e[0m' -r
+    ;;
+0)
+            exit
+            ;;
+10)
+            clear
+            print_box_header "JEXACTYL FULL PANEL MIGRATION" $NEON_PURPLE
+            
+            echo -e "${BOLD}${RED}╔══════════════════════════════════════════════════════════════╗${RESET}"
+            echo -e "${BOLD}${RED}║                     CRITICAL WARNING                         ║${RESET}"
+            echo -e "${BOLD}${RED}║  This will COMPLETELY OVERWRITE your Pterodactyl panel       ║${RESET}"
+            echo -e "${BOLD}${RED}║  with the full Jexactyl panel (billing, ticketing, etc.).    ║${RESET}"
+            echo -e "${BOLD}${RED}║                                                              ║${RESET}"
+            echo -e "${BOLD}${RED}║  THIS ACTION IS NOT REVERSIBLE WITHOUT A BACKUP!             ║${RESET}"
+            echo -e "${BOLD}${RED}║  BACKUP YOUR FILES AND DATABASE BEFORE CONTINUING!           ║${RESET}"
+            echo -e "${BOLD}${RED}╚══════════════════════════════════════════════════════════════╝${RESET}"
+            echo
+            
+            # Require user to type exactly "yes" to confirm
+            while true; do
+                echo -e "${YELLOW}${BOLD}To continue the migration, type ${UNDERLINE}yes${RESET}${YELLOW}${BOLD} exactly and press Enter:${RESET}"
+                read -r confirmation
+                if [[ "$confirmation" == "yes" ]]; then
+                    break
+                else
+                    echo -e "${RED}${BOLD}✘ Incorrect confirmation. You typed: '${confirmation:-<empty>}'${RESET}"
+                    echo -e "${YELLOW}Migration cancelled. Returning to menu...${RESET}"
+                    read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                    continue 2  # Return to main menu
+                fi
+            done
+            
+            progress "Navigating to panel directory..."
+            cd /var/www/pterodactyl || { 
+                echo -e "${RED}${BOLD}✘ Panel directory not found! (/var/www/pterodactyl)${RESET}"
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Placing panel in maintenance mode..."
+            php artisan down || {
+                echo -e "${RED}${BOLD}✘ Failed to enable maintenance mode.${RESET}"
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Downloading latest stable Jexactyl release (v3.7.4)..."
+            curl -L -o panel.tar.gz https://github.com/jexactyl/jexactyl/releases/download/v3.7.4/panel.tar.gz || {
+                echo -e "${RED}${BOLD}✘ Download failed. Check internet or GitHub status.${RESET}"
+                php artisan up
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Extracting and replacing files..."
+            tar -xzvf panel.tar.gz >/dev/null && rm -f panel.tar.gz || {
+                echo -e "${RED}${BOLD}✘ Failed to extract archive.${RESET}"
+                rm -f panel.tar.gz 2>/dev/null
+                php artisan up
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Setting storage and cache permissions..."
+            chmod -R 755 storage/* bootstrap/cache
+            
+            progress "Updating Composer dependencies..."
+            composer require asbiin/laravel-webauthn --no-interaction 2>/dev/null || echo -e "${YELLOW}ℹ WebAuthn package skipped (usually not needed).${RESET}"
+            composer install --no-dev --optimize-autoloader --no-interaction || {
+                echo -e "${RED}${BOLD}✘ Composer installation failed.${RESET}"
+                php artisan up
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Clearing application caches..."
+            php artisan optimize:clear
+            
+            progress "Running database migrations & seeding..."
+            php artisan migrate --seed --force || {
+                echo -e "${RED}${BOLD}✘ Database migration failed! Restore backup ASAP!${RESET}"
+                php artisan up
+                read -p $'\e[93mPress Enter to continue...\e[0m' -r
+                continue
+            }
+            
+            progress "Fixing webserver ownership (www-data)..."
+            chown -R www-data:www-data /var/www/pterodactyl/* 2>/dev/null || echo -e "${YELLOW}ℹ Ownership fix skipped (manual chown if needed).${RESET}"
+            
+            progress "Restarting queue workers..."
+            php artisan queue:restart
+            
+            progress "Bringing panel back online..."
+            php artisan up
+            
+            echo
+            echo -e "${NEON_GREEN}${BOLD}╔══════════════════════════════════════════════════════════════╗${RESET}"
+            echo -e "${NEON_GREEN}${BOLD}║               JEXACTYL MIGRATION SUCCESSFUL!                  ║${RESET}"
+            echo -e "${NEON_GREEN}${BOLD}║  Your panel is now running Jexactyl v3.7.4 (latest stable)   ║${RESET}"
+            echo -e "${NEON_GREEN}${BOLD}║  Enjoy billing, ticketing, improved UI & many more features! ║${RESET}"
+            echo -e "${NEON_GREEN}${BOLD}╚══════════════════════════════════════════════════════════════╝${RESET}"
+            echo
+            echo -e "${CYAN}${BOLD}➜ Hard refresh browser (Ctrl+Shift+R) to load the new panel.${RESET}"
+            echo -e "${WHITE}${DIM}Welcome to Jexactyl! 🎉${RESET}"
+            
+            read -p $'\e[93mPress Enter to continue...\e[0m' -r
+            ;;
+    esac
+done
