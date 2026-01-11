@@ -3,9 +3,8 @@
 # PTERODACTYL HOSTING MANAGER - NEXT GEN ULTRA EDITION
 # 2025 Edition
 # ===================================================
-# Original Creator: MahimOp
-# YouTube : https://www.youtube.com/@mahimxyz
-# Discord : https://discord.gg/zkDNdPpArS
+# Original Creator: FeatherPlayzZ
+# YouTube : https://www.youtube.com/@featherplayz01
 # ===================================================
 set -e
 # Next-Gen Neon Color Theme
@@ -31,19 +30,18 @@ welcome_banner() {
     clear
     echo -e "${DANGER}"
     cat << "EOF"
- ___      ___       __       __    __   __     ___      ___ 
-|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
- \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
- /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
-|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
-|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
-|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
-   
+ ______        _   _               _____  _                 
+|  ____|      | | | |             |  __ \| |                
+| |__ ___  ___| |_| |__   ___ _ __| |__) | | __ _ _   _ ____
+|  __/ _ \/ _` | __| '_ \ / _ \ '__|  ___/| |/ _` | | | |_  /
+| | |  __/ (_| | |_| | | |  __/ |  | |    | | (_| | |_| |/ / 
+|_|  \___|\__,_|\__|_| |_|\___|_|  |_|    |_|\__,_|\__, /___|
+                                                   |___/   
 EOF
     echo -e "${NEON_PURPLE}${BOLD} NEXT GEN ULTRA EDITION - 2025${RESET}"
     echo -e "${GLOW} Ultimate Pterodactyl Control Center${RESET}"
-    echo -e "${DIM} Original Creator: ${BOLD}MahimOp${RESET} ${DIM}| YouTube: @mahimxyz${RESET}"
-    echo -e "${DIM} Discord: https://discord.gg/zkDNdPpArS${RESET}"
+    echo -e "${DIM} Original Creator: ${BOLD}MahimOp${RESET} ${DIM}| YouTube: @featherplayz01${RESET}"
+    echo -e "${DIM} Discord: https://discord.gg/N5MqeYrYMB${RESET}"
     echo -e "${DANGER}══════════════════════════════════════════════════════════${RESET}\n"
     sleep 1.5
 }
@@ -73,14 +71,13 @@ run_remote_script() {
     clear
     echo -e "${NEON_PURPLE}"
     cat << "EOF"
- ___      ___       __       __    __   __     ___      ___ 
-|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
- \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
- /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
-|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
-|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
-|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
-                             
+ ______        _   _               _____  _                 
+|  ____|      | | | |             |  __ \| |                
+| |__ ___  ___| |_| |__   ___ _ __| |__) | | __ _ _   _ ____
+|  __/ _ \/ _` | __| '_ \ / _ \ '__|  ___/| |/ _` | | | |_  /
+| | |  __/ (_| | |_| | | |  __/ |  | |    | | (_| | |_| |/ / 
+|_|  \___|\__,_|\__|_| |_|\___|_|  |_|    |_|\__,_|\__, /___|
+                                                   |___/   
 EOF
     print_box_header "$name" $NEON_PURPLE
     progress "Downloading and executing remote script..."
@@ -101,15 +98,13 @@ show_menu() {
     clear
     echo -e "${DANGER}"
     cat << "EOF"
- ___      ___       __       __    __   __     ___      ___ 
-|"  \    /"  |     /""\     /" |  | "\ |" \   |"  \    /"  |
- \   \  //   |    /    \   (:  (__)  :)||  |   \   \  //   |
- /\\  \/.    |   /' /\  \   \/      \/ |:  |   /\\  \/.    |
-|: \.        |  //  __'  \  //  __  \\ |.  |  |: \.        |
-|.  \    /:  | /   /  \\  \(:  (  )  :)/\  |\ |.  \    /:  |
-|___|\__/|___|(___/    \___)\__|  |__/(__\_|_)|___|\__/|___|
-                                                           
-                                              
+ ______        _   _               _____  _                 
+|  ____|      | | | |             |  __ \| |                
+| |__ ___  ___| |_| |__   ___ _ __| |__) | | __ _ _   _ ____
+|  __/ _ \/ _` | __| '_ \ / _ \ '__|  ___/| |/ _` | | | |_  /
+| | |  __/ (_| | |_| | | |  __/ |  | |    | | (_| | |_| |/ / 
+|_|  \___|\__,_|\__|_| |_|\___|_|  |_|    |_|\__,_|\__, /___|
+                                                   |___/                             
 EOF
     echo -e "${NEON_PURPLE}${BOLD} PTERODACTYL HOSTING MANAGER${RESET}\n"
     print_box_header "CONTROL PANEL" $NEON_PURPLE
