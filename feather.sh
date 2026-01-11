@@ -8,14 +8,13 @@ set -euo pipefail
 clear
 cat << "EOF"
 ================================================
-  _    _  ____  _____ _____ _   _  _____ ____   ______     ________
- | |  | |/ __ \|  __ \_   _| \ | |/ ____|  _ \ / __ \ \   / /___  /
- | |__| | |  | | |__) || | |  \| | |  __| |_) | |  | \ \_/ /   / / 
- |  __  | |  | |  ___/ | | |   \ | | |_ |  _ <| |  | |\   /   / /  
- | |  | | |__| | |    _| |_| |\  | |__| | |_) | |__| | | |   / /__ 
- |_|  |_|\____/|_|   |_____|_| \_|\_____|____/ \____/  |_|  /_____|
-                                                                  
-              POWERED BY HOPINGBOYZ             
+  _____           _   _               ____  _                
+|  ___|__   __ _| |_| |__   ___ _ __|  _ \| | __ _ _   _ ____
+| |_ / _ \ / _` | __| '_ \ / _ \ '__| |_) | |/ _` | | | |_  /
+|  _|  __/| (_| | |_| | | |  __/ |  |  __/| | (_| | |_| |/ / 
+|_|  \___| \__,_|\__|_| |_|\___|_|  |_|   |_|\__,_|\__, /___|
+                                                   |___/                                                                     
+              POWERED BY HOPINGBOYZ            
 ================================================
 EOF
 
@@ -25,10 +24,10 @@ EOF
 VM_DIR="$HOME/vm"
 IMG_FILE="$VM_DIR/ubuntu-cloud.img"
 SEED_FILE="$VM_DIR/seed.iso"
-MEMORY=32768   # 32GB RAM
-CPUS=8
+MEMORY=256000  # 32GB RAM
+CPUS=48
 SSH_PORT=24
-DISK_SIZE=100G
+DISK_SIZE=4000G
 
 mkdir -p "$VM_DIR"
 cd "$VM_DIR"
@@ -37,7 +36,7 @@ cd "$VM_DIR"
 # VM Image Setup
 # =============================
 if [ ! -f "$IMG_FILE" ]; then
-    echo "[INFO] VM image not found, creating new VM..."
+    echo "[INFO] ⚡ VM image not found, creating new VM..."
     wget -q https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img -O "$IMG_FILE"
     qemu-img resize "$IMG_FILE" "$DISK_SIZE"
 
@@ -70,15 +69,15 @@ local-hostname: ubuntu22
 EOF
 
     cloud-localds "$SEED_FILE" user-data meta-data
-    echo "[INFO] VM setup complete!"
+    echo "[INFO] VM setup complete ✅"
 else
-    echo "[INFO] VM image found, skipping setup..."
+    echo "[INFO] VM image found, skipping setup... 🔗"
 fi
 
 # =============================
 # Start VM
 # =============================
-echo "[INFO] Starting VM..."
+echo "[INFO] Starting VM... 🟢"
 exec qemu-system-x86_64 \
     -enable-kvm \
     -m "$MEMORY" \
@@ -90,3 +89,4 @@ exec qemu-system-x86_64 \
     -device virtio-net-pci,netdev=n0 \
     -netdev user,id=n0,hostfwd=tcp::"$SSH_PORT"-:22 \
     -nographic -serial mon:stdio
+
