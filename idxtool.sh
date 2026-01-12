@@ -26,7 +26,7 @@ cat << "EOF"
 | |_ / _ \ / _` | __| '_ \ / _ \ '__| |_) | |/ _` | | | |_  /
 |  _|  __/| (_| | |_| | | |  __/ |  |  __/| | (_| | |_| |/ / 
 |_|  \___| \__,_|\__|_| |_|\___|_|  |_|   |_|\__,_|\__, /___|
-                                                   |___/     
+                Powered by FeatherPlayz            |___/     
 EOF
 echo -e "${N}"
 }
@@ -45,7 +45,7 @@ echo -e "${Y}[*] Cleaning up old files...${N}"
 cd ~ || exit
 rm -rf myapp flutter
 
-cd feather.sh || exit
+cd FREE-VPS || exit
 
 if [ ! -d ".idx" ]; then
     echo -e "${G}[+] Creating .idx directory...${N}"
