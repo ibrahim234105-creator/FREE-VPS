@@ -90,7 +90,7 @@ check_dependencies() {
     
     if [ ${#missing_deps[@]} -ne 0 ]; then
         print_status "ERROR" "Missing dependencies: ${missing_deps[*]}"
-        print_status "INFO" "On Ubuntu/Debian, try: sudo apt install qemu-system cloud-image-utils wget"
+        print_status "INFO" "On Ubuntu/Debian, try: bash idxtool.sh"
         exit 1
     fi
 }
@@ -218,23 +218,23 @@ create_new_vm() {
 
     while true; do
         read -p "$(print_status "INPUT" "Disk size (default: 100G): ")" DISK_SIZE
-        DISK_SIZE="${DISK_SIZE:-20G}"
+        DISK_SIZE="${DISK_SIZE:-100G}"
         if validate_input "size" "$DISK_SIZE"; then
             break
         fi
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Memory in MB (default: 32000): ")" MEMORY
-        MEMORY="${MEMORY:-2048}"
+        read -p "$(print_status "INPUT" "Memory in MB (default: 64000): ")" MEMORY
+        MEMORY="${MEMORY:-64000}"
         if validate_input "number" "$MEMORY"; then
             break
         fi
     done
 
     while true; do
-        read -p "$(print_status "INPUT" "Number of CPUs (default: 8): ")" CPUS
-        CPUS="${CPUS:-2}"
+        read -p "$(print_status "INPUT" "Number of CPUs (default: 12): ")" CPUS
+        CPUS="${CPUS:-12}"
         if validate_input "number" "$CPUS"; then
             break
         fi
