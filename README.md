@@ -57,11 +57,12 @@ To use the Qemu-VMs-Manager, do the following things.
 4) Automated Boot: The script handles the download, image resizing, and KVM launch in a single workflow.
 
 # 🔬 Development & Research Focus
-****This project is currently utilized for:
+**This project is currently utilized for:
 Benchmarking Hypervisor Overhead on Ubuntu-latest kernels.
 Testing Distributed System Node Stability in isolated virtual networks.
-Educational research into Linux Kernel Module interaction within QEMU environments.
-POWERED BY FEATHERPLAYZ © 2026 FusionNodes Infrastructure Research Lab****
+Educational research into Linux Kernel Module interaction within QEMU environments.**
+
+**POWERED BY FEATHERPLAYZ © 2026 FusionNodes Infrastructure Research Lab**
 
 
 
