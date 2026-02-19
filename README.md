@@ -52,7 +52,7 @@ To use the Qemu-VMs-Manager, do the following things.
 # 🖥️ Usage Guide
 ### Upon execution, the FeatherPlayz Management Console will guide you through:
 1) OS Selection: Choose from a list of verified Cloud-Images.
-2).Resource Allocation: Define custom RAM, CPU cores, and storage size.
+2) Resource Allocation: Define custom RAM, CPU cores, and storage size.
 3) Port Mapping: Assign a host port for remote SSH access to the guest.
 4) Automated Boot: The script handles the download, image resizing, and KVM launch in a single workflow.
 
